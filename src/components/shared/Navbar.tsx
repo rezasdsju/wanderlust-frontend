@@ -12,11 +12,12 @@ const Navbar = () => {
 
     const pathName = usePathname()
     return (
-        <nav className={`grid grid-cols-3 items-center py-2 px-2   bg-white ${pathName === '/' ? 'absolute  sm:top-2 sm:left-2 sm:right-2 z-10' : 'sticky top-0'}`}>
-            <div className="flex items-center justify-start">
+        <nav className={`grid grid-cols-5 items-center py-2 px-2   bg-white ${pathName === '/' ? 'absolute  sm:top-2 sm:left-2 sm:right-2 z-10' : 'sticky top-0'}`}>
+            <div className="col-span-2 flex items-center justify-start">
                 <ul className="hidden  sm:flex items-center gap-4">
                     <Link href="/"><li className={`${pathName === '/' && 'text-blue-500'}`}>Home</li></Link>
                     <li>Destinations</li>
+                    <Link href={`/add-destination`}><li className={`${pathName === '/add-destination' && 'text-blue-500'}`}>Add Destination</li></Link>
                     <li>My Bookings</li>
                     <li>Admin</li>
                 </ul>
@@ -38,16 +39,17 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className="border-b border-neutral-100 py-4 text-lg text-neutral-700">Destinations</li>
+                    <Link href={`/add-destination`}><li onClick={() => setToggleNavLinks(false)} className="border-b border-neutral-100 py-4 text-lg text-neutral-700">Add Destination</li></Link>
                     <li className="border-b border-neutral-100 py-4 text-lg text-neutral-700">My Bookings</li>
                     <li className="py-4 text-lg text-neutral-700">Admin</li>
                 </ul>
 
 
             </div>
-            <div className="mx-auto">
+            <div className="col-span-1 mx-auto">
                 <h3 className="text-center text-2xl text-blue-600 font-bold">Wanderlust</h3>
             </div>
-            <div className="hidden sm:flex items-center justify-end gap-2">
+            <div className="hidden sm:col-span-2 sm:flex items-center justify-end gap-2">
                 <div className="flex items-center gap-1">
                     <span><FaUser /></span>
                     <span>Profile</span>
@@ -55,7 +57,7 @@ const Navbar = () => {
                 <span>Login</span>
                 <span>Signup</span>
             </div>
-            <div className=" items-center  sm:hidden  gap-2">
+            <div className="col-span-2 items-center  sm:hidden  gap-2">
                 <div className="flex items-center justify-end gap-1">
                     <span onClick={() => setProfileToggle(!profileToggle)}><FaUser /></span>
                     {/* <span>Profile</span> */}
@@ -64,6 +66,9 @@ const Navbar = () => {
             </div>
             {profileToggle && (
                 <div className="absolute top-14 right-4 w-40 rounded-xl border border-neutral-100 bg-white p-2 shadow-lg">
+                    <div onClick={()=>{setProfileToggle(!profileToggle)}} className="flex items-center justify-end">
+                        <RxCross2 />
+                    </div>
                     <div className="flex flex-col gap-1">
                         <button className="rounded-md px-3 py-2 text-left hover:bg-neutral-50">
                             Login

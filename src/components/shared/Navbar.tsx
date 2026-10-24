@@ -12,7 +12,7 @@ const Navbar = () => {
 
     const pathName = usePathname()
     return (
-        <nav className={`grid grid-cols-3 items-center py-2 px-2   bg-white ${pathName === '/' ? 'absolute  top-2 left-2 right-2 z-10':'sticky top-0'}`}>
+        <nav className={`grid grid-cols-3 items-center py-2 px-2   bg-white ${pathName === '/' ? 'absolute  sm:top-2 sm:left-2 sm:right-2 z-10':'sticky top-0'}`}>
             <div className="flex items-center justify-start">
                 <ul className="hidden  sm:flex items-center gap-4">
                     <Link href="/"><li className={`${pathName === '/' && 'text-blue-500'}`}>Home</li></Link>

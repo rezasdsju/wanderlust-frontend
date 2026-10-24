@@ -31,7 +31,7 @@ const Footer = () => {
 
     return (
         <footer className="bg-[#0C0B0B] text-white">
-            <div className="mx-auto w-full max-w-360 px-6 pt-14 pb-8 sm:px-10 sm:pt-16 lg:px-12 lg:pt-20">
+            <div className="mx-auto w-full max-w-360 px-6 pt-6 pb-4 sm:px-6 sm:pt-7 lg:px-8 lg:pt-10">
                 <div>
                     <h2 className="text-3xl font-bold tracking-tight sm:text-3xl lg:text-4xl xl:text-5xl">Wanderlust</h2>
                     <p className="mt-3 text-sm text-[#B6B6B6] sm:text-base lg:text-lg">
@@ -39,7 +39,7 @@ const Footer = () => {
                     </p>
                 </div>
 
-                <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:mt-18 lg:grid-cols-[1.6fr_repeat(3,1fr)] lg:gap-x-16">
+                <div className="mt-4 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:mt-6 lg:grid-cols-[1.6fr_repeat(3,1fr)] lg:gap-x-16">
                     <div className="max-w-85">
                         <h3 className="text-xs font-medium tracking-[0.18em] text-[#9C9C9C] uppercase">
                             Newsletter

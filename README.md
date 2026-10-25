@@ -2,6 +2,10 @@
 
 A travel platform that helps users discover their ideal tour destinations and book tour packages with ease.
 
+
+## Features
+- Add new travel packages (admin-only access coming soon)
+
 ## Technologies Used
 
 <p align="left">

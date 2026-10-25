@@ -1,3 +1,4 @@
+'use client'
 import { Field, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -8,6 +9,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import React from "react"
+
 const categories = [
     "Beach",
     "Mountain",
@@ -38,13 +41,36 @@ const countries = [
     "United States",
 ];
 const AddDestinationPage = () => {
+    const handleAddPackage = async (e:React.SubmitEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        const newPackage = Object.fromEntries(formData.entries())
+        // console.log('newPackage: ',newPackage)
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newPackage),
+        })
+        if (!res.ok){
+            console.log('Failed to add destination')
+            return 
+        }
+        const result = await res.json()
+        // console.log(result)
+        if (result.acknowledged){
+            console.log('Successfully inserted destination')
+        }
+
+    }
     return (
         <div className="max-w-3xl mx-auto my-10 px-2">
             <div>
                 <h2 className="text-3xl pb-5">Add New Travel Package</h2>
             </div>
             <div>
-                <form className="space-y-2">
+                <form onSubmit={handleAddPackage} className="space-y-2">
                     <Field>
                         <FieldLabel htmlFor="destination">Destination Name</FieldLabel>
                         <Input

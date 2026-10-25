@@ -14,3 +14,8 @@ A travel platform that helps users discover their ideal tour destinations and bo
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/shadcn%20ui-000000?style=for-the-badge&logo=shadcnui&logoColor=white" alt="shadcn/ui" />
 </p>
+
+
+## Backend
+
+This project uses the [Wanderlust Server](https://github.com/rezasdsju/wanderlust-backend) as its API.

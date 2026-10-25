@@ -9,4 +9,6 @@ export interface IDestination {
     image_url: string;
     description: string;
     rating?: number;
+    reviews?: number;
+    highlights?: string[];
 }

@@ -4,7 +4,11 @@ A travel platform that helps users discover their ideal tour destinations and bo
 
 
 ## Features
+
 - Add new travel packages (admin-only access coming soon)
+- Browse all destinations in one place
+- Filter destinations by category, country and price range
+- View destination details
 
 ## Technologies Used
 

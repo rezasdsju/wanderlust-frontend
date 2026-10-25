@@ -8,4 +8,5 @@ export interface IDestination {
     departure_date: string;
     image_url: string;
     description: string;
+    rating?: number;
 }

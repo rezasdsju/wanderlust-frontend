@@ -9,6 +9,7 @@ A travel platform that helps users discover their ideal tour destinations and bo
 - Browse all destinations in one place
 - Filter destinations by category, country and price range
 - View destination details
+- Edit destination details (admin-only access coming soon)
 
 ## Technologies Used
 

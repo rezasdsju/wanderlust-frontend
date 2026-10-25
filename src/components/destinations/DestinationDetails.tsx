@@ -6,12 +6,11 @@ import {
     LuCalendarDays,
     LuCheck,
     LuMapPin,
-  
-    LuTrash2,
 } from "react-icons/lu";
 import { IoStar } from "react-icons/io5";
 import type { IDestination } from "@/types/destinationType";
 import { EditDestination } from "./EditDestination";
+import DeleteDestination from "./DeleteDestination";
 const benefits = [
     "Free cancellation up to 7 days",
     "Travel insurance included",
@@ -63,14 +62,8 @@ const DestinationDetails = ({ destination }: { destination: IDestination }) => {
                 <div className="flex items-center gap-2">
 
                         <EditDestination destination={destination}></EditDestination>
-                    
-                    <button
-                        type="button"
-                        className="inline-flex h-9 items-center gap-2 rounded-md border border-red-300 bg-white px-3 text-sm font-medium text-red-500 transition hover:bg-red-50"
-                    >
-                        <LuTrash2 className="size-3.5" />
-                        Cancel
-                    </button>
+                    <DeleteDestination destination={destination}></DeleteDestination>
+
                 </div>
             </div>
 

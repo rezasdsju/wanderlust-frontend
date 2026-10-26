@@ -1,11 +1,11 @@
 import Image from "next/image";
+import DeleteBooking from "./DeleteBooking";
 import {
     LuCalendarDays,
     LuCircleCheck,
     LuClock,
     LuEye,
     LuTicket,
-    LuTrash2,
 } from "react-icons/lu";
 import type { IBooking } from "@/types/bookingType";
 
@@ -84,13 +84,8 @@ const MyBookingCard = ({ booking }: { booking: IBooking }) => {
                     </p>
 
                     <div className="flex items-center gap-3">
-                        <button
-                            type="button"
-                            className="inline-flex h-8 items-center gap-1.5 rounded-md border border-red-300 bg-white px-3 text-sm font-medium text-red-500 transition hover:bg-red-50 hover:text-red-600"
-                        >
-                            <LuTrash2 className="size-4" />
-                            Cancel
-                        </button>
+                        <DeleteBooking booking={booking}></DeleteBooking>
+
                         <button
                             type="button"
                             className="inline-flex h-8 items-center gap-1.5 rounded-md border border-cyan-600 bg-cyan-600 px-3 text-sm font-medium text-white transition hover:bg-cyan-700"

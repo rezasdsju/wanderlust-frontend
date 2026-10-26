@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
     LuArrowLeft,
-    LuArrowRight,
     LuCalendarDays,
     LuCheck,
     LuMapPin,
@@ -11,11 +10,8 @@ import { IoStar } from "react-icons/io5";
 import type { IDestination } from "@/types/destinationType";
 import { EditDestination } from "./EditDestination";
 import DeleteDestination from "./DeleteDestination";
-const benefits = [
-    "Free cancellation up to 7 days",
-    "Travel insurance included",
-    "24/7 customer support",
-];
+import BookingForm from "../bookings/BookingForm";
+
 
 const buildHighlights = (destination: IDestination) => {
     if (destination.highlights?.length) {
@@ -30,19 +26,6 @@ const buildHighlights = (destination: IDestination) => {
     ];
 };
 
-const formatPrice = (price: string) => {
-    const value = price?.toString().trim() ?? "";
-    return value.startsWith("$") ? value : `$${value}`;
-};
-
-const toDateInputValue = (value: string) => {
-    if (!value) {
-        return "";
-    }
-
-    const date = new Date(value);
-    return Number.isNaN(date.getTime()) ? "" : date.toISOString().slice(0, 10);
-};
 
 const DestinationDetails = ({ destination }: { destination: IDestination }) => {
     const highlights = buildHighlights(destination);
@@ -132,45 +115,7 @@ const DestinationDetails = ({ destination }: { destination: IDestination }) => {
                     </section>
                 </div>
 
-                <aside className="h-fit rounded-lg border border-neutral-200 bg-white p-5 shadow-sm lg:sticky lg:top-24">
-                    <p className="text-sm text-neutral-500">Starting from</p>
-                    <p className="mt-1 text-3xl font-semibold text-cyan-600">
-                        {formatPrice(destination.price)}
-                    </p>
-                    <p className="text-sm text-neutral-500">per person</p>
-
-                    <div className="my-5 border-t border-neutral-200" />
-
-                    <label htmlFor="departure-date" className="sr-only">
-                        Departure date
-                    </label>
-                    <input
-                        id="departure-date"
-                        type="date"
-                        defaultValue={toDateInputValue(destination.departure_date)}
-                        className="h-10 w-full rounded-md border border-neutral-200 bg-neutral-50 px-3 text-sm text-neutral-700 outline-none transition focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100"
-                    />
-
-                    <button
-                        type="button"
-                        className="mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-md bg-cyan-600 text-sm font-medium text-white transition hover:bg-cyan-700"
-                    >
-                        Book Now
-                        <LuArrowRight className="size-4" />
-                    </button>
-
-                    <ul className="mt-5 space-y-3">
-                        {benefits.map((benefit) => (
-                            <li
-                                key={benefit}
-                                className="flex items-center gap-2 text-xs text-neutral-600"
-                            >
-                                <LuCheck className="size-3.5 shrink-0 text-green-600" />
-                                <span>{benefit}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </aside>
+<BookingForm destination={destination}></BookingForm>
             </div>
         </section>
     );

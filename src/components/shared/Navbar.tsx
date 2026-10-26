@@ -22,7 +22,7 @@ const Navbar = () => {
             <div className="col-span-5 flex items-center justify-start">
                 <ul className="hidden  lg:flex items-center gap-4">
                     <Link href="/"><li className={`${pathName === '/' && 'text-blue-500'}`}>Home</li></Link>
-                    <li>Destinations</li>
+                    <Link href={`/all-destinations`}><li className={`${pathName === '/all-destinations' && 'text-blue-500'}`}>Destinations</li></Link>
                     <Link href={`/add-destination`}><li className={`${pathName === '/add-destination' && 'text-blue-500'}`}>Add Destination</li></Link>
                     <li>My Bookings</li>
                     <li>Admin</li>
@@ -55,37 +55,10 @@ const Navbar = () => {
             <div className="col-span-2 ">
                 <h3 className="text-start sm:text-center text-base  min-[340px]:text-2xl text-blue-600 font-bold">Wanderlust</h3>
             </div>
-            {/* <div className="hidden sm:col-span-2 sm:flex items-center justify-end gap-2">
-                <div className="flex items-center gap-1">
-                    <span><FaUser /></span>
-                    <span>Profile</span>
-                </div>
-                <span>Login</span>
-                <span>Signup</span>
-            </div> */}
 
-            {/* <div className="col-span-2 items-center  sm:hidden  gap-2">
-                <div className="flex items-center justify-end gap-1">
-                    <span onClick={() => setProfileToggle(!profileToggle)}><FaUser /></span>
-                 
-                </div>
 
-            </div> */}
-            {/* {profileToggle && (
-                <div className="absolute top-14 right-4 w-40 rounded-xl border border-neutral-100 bg-white p-2 shadow-lg">
-                    <div onClick={() => { setProfileToggle(!profileToggle) }} className="flex items-center justify-end">
-                        <RxCross2 />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                        <button className="rounded-md px-3 py-2 text-left hover:bg-neutral-50">
-                            Login
-                        </button>
-                        <button className="rounded-md bg-blue-600 px-3 py-2 text-left text-white hover:bg-blue-700">
-                            Signup
-                        </button>
-                    </div>
-                </div>
-            )} */}
+
+
             <div className=" col-span-5 flex items-center justify-end gap-2">
                 {
                     user ?

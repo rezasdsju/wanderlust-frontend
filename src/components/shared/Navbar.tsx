@@ -44,7 +44,7 @@ const Navbar = () => {
                             Home
                         </Link>
                     </li>
-                    <li className="border-b border-neutral-100 py-4 text-lg text-neutral-700">Destinations</li>
+                    <Link href={`/all-destinations`}><li onClick={() => setToggleNavLinks(false)} className="border-b border-neutral-100 py-4 text-lg text-neutral-700">Destinations</li></Link>
                     <Link href={`/add-destination`}><li onClick={() => setToggleNavLinks(false)} className="border-b border-neutral-100 py-4 text-lg text-neutral-700">Add Destination</li></Link>
                     <li className="border-b border-neutral-100 py-4 text-lg text-neutral-700">My Bookings</li>
                     <li className="py-4 text-lg text-neutral-700">Admin</li>

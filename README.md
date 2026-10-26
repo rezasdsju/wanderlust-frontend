@@ -12,6 +12,8 @@ A travel platform that helps users discover their ideal tour destinations and bo
 - View destination details
 - Edit destination details (admin-only access coming soon)
 - Delete destination (admin-only access coming soon)
+- View bookings associated with the authenticated user's email
+- Delete bookings from the user's booking list
 
 ## Technologies Used
 

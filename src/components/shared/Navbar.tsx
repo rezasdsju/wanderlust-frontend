@@ -24,7 +24,7 @@ const Navbar = () => {
                     <Link href="/"><li className={`${pathName === '/' && 'text-blue-500'}`}>Home</li></Link>
                     <Link href={`/all-destinations`}><li className={`${pathName === '/all-destinations' && 'text-blue-500'}`}>Destinations</li></Link>
                     <Link href={`/add-destination`}><li className={`${pathName === '/add-destination' && 'text-blue-500'}`}>Add Destination</li></Link>
-                    <li>My Bookings</li>
+                    <Link href={`/my-bookings`}> <li className={`${pathName === '/my-bookings' && 'text-blue-500'}`}>My Bookings</li></Link>
                     <li>Admin</li>
                 </ul>
                 <div className="flex lg:hidden">
@@ -46,7 +46,7 @@ const Navbar = () => {
                     </li>
                     <Link href={`/all-destinations`}><li onClick={() => setToggleNavLinks(false)} className="border-b border-neutral-100 py-4 text-lg text-neutral-700">Destinations</li></Link>
                     <Link href={`/add-destination`}><li onClick={() => setToggleNavLinks(false)} className="border-b border-neutral-100 py-4 text-lg text-neutral-700">Add Destination</li></Link>
-                    <li className="border-b border-neutral-100 py-4 text-lg text-neutral-700">My Bookings</li>
+                    <Link href={`/my-bookings`}><li onClick={() => setToggleNavLinks(false)} className="border-b border-neutral-100 py-4 text-lg text-neutral-700">My Bookings</li></Link>
                     <li className="py-4 text-lg text-neutral-700">Admin</li>
                 </ul>
 

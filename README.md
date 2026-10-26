@@ -5,12 +5,14 @@ A travel platform that helps users discover their ideal tour destinations and bo
 
 ## Features
 
+- Email and password authentication (signup and login)
 - Add new travel packages (admin-only access coming soon)
 - Browse all destinations in one place
 - Filter destinations by category, country and price range
 - View destination details
 - Edit destination details (admin-only access coming soon)
 - Delete destination (admin-only access coming soon)
+
 ## Technologies Used
 
 <p align="left">

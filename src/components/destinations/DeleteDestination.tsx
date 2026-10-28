@@ -10,17 +10,25 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { authClient } from "@/lib/auth-client"
 import getTokenFromClient from "@/lib/getTokenFromClient"
 import { IDestination } from "@/types/destinationType"
 import { useRouter } from "next/navigation"
 import React from "react"
 
 import { LuTrash2 } from "react-icons/lu"
+import { toast } from "react-toastify"
 
 export default function DeleteDestination({ destination }: { destination: IDestination }) {
     const router = useRouter()
-    
+    const {data:session} = authClient.useSession()
+    const user = session?.user
+    const role = user?.role
     const handleDelete = async () => {
+        if (role!=='admin'){
+            toast.error('Only admin can delete')
+            return
+        }
         const token = await getTokenFromClient()
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations/${destination._id}`, {
             method: 'DELETE',

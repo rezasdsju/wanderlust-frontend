@@ -10,26 +10,31 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import getTokenFromClient from "@/lib/getTokenFromClient"
 import { IDestination } from "@/types/destinationType"
 import { useRouter } from "next/navigation"
 import React from "react"
 
 import { LuTrash2 } from "react-icons/lu"
 
-export default function DeleteDestination({destination}:{destination:IDestination}) {
+export default function DeleteDestination({ destination }: { destination: IDestination }) {
     const router = useRouter()
-    const handleDelete = async()=>{
-   
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations/${destination._id}`,{
-            method:'DELETE'
+    const token = getTokenFromClient()
+    const handleDelete = async () => {
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations/${destination._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${token}`
+            }
         })
-        if (!res.ok){
+        if (!res.ok) {
             console.log('Resposne not okay')
             return
         }
         const result = await res.json()
         // console.log(result)
-        if (result.acknowledged){
+        if (result.acknowledged) {
             console.log('Delete Successfull')
             router.replace('/all-destinations')
         }

@@ -14,7 +14,8 @@ A travel platform that helps users discover their ideal tour destinations and bo
 - Edit destination details (admin-only access coming soon)
 - Delete destination (admin-only access coming soon)
 - View bookings associated with the authenticated user's email
-- Delete bookings from the user's booking list
+- Cancel bookings from the user's booking list
+- JWT-secured destination details API (other routes coming soon)
 
 
 ## Technologies Used
@@ -27,8 +28,25 @@ A travel platform that helps users discover their ideal tour destinations and bo
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
   <img src="https://img.shields.io/badge/Better%20Auth-000000?style=for-the-badge" alt="Better Auth" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JWT" />
 </p>
 
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+    NEXT_PUBLIC_BASE_API_URL=http://localhost:5000
+    MONGODB_URI=your_mongodb_connection_string
+    BETTER_AUTH_SECRET=your_secret
+    BETTER_AUTH_URL=http://localhost:3000
+
+## Getting Started
+
+1. Clone and run the [backend server](https://github.com/rezasdsju/wanderlust-backend) first
+2. Install dependencies: `npm install`
+3. Add the `.env.local` file
+4. Start the app: `npm run dev`
 
 ## Backend
 

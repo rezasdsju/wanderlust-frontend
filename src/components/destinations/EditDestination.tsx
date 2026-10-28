@@ -68,7 +68,7 @@ export function EditDestination({ destination }: { destination: IDestination }) 
         const formData = new FormData(e.currentTarget)
         const updatedData = Object.fromEntries(formData.entries())
         // console.log('updatedData: ', updatedData)
-        const token = getTokenFromClient()
+        const token = await getTokenFromClient()
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations/${destination._id}`, {
             method: "PATCH",
             headers: {

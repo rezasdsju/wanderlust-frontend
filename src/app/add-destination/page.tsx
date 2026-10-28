@@ -49,7 +49,7 @@ const AddDestinationPage = () => {
         const newPackage = Object.fromEntries(formData.entries())
         // console.log('newPackage: ',newPackage)
 
-        const token = getTokenFromClient()
+        const token = await getTokenFromClient()
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations`, {
             method: "POST",
             headers: {

@@ -19,9 +19,9 @@ import { LuTrash2 } from "react-icons/lu"
 
 export default function DeleteDestination({ destination }: { destination: IDestination }) {
     const router = useRouter()
-    const token = getTokenFromClient()
+    
     const handleDelete = async () => {
-
+        const token = await getTokenFromClient()
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations/${destination._id}`, {
             method: 'DELETE',
             headers: {

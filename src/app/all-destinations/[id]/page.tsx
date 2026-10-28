@@ -10,7 +10,7 @@ const DestinationDetailPage = async ({
 }) => {
     const { id } = await params;
 
-    const token = getTokenFromServer()
+    const token = await getTokenFromServer()
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations/${id}`,{
         headers: {
             authorization: `Bearer ${token}`

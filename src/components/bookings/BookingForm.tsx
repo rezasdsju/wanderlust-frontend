@@ -1,5 +1,6 @@
 'use client'
 import { authClient } from "@/lib/auth-client";
+import getTokenFromClient from "@/lib/getTokenFromClient";
 import type { IDestination } from "@/types/destinationType";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -55,10 +56,12 @@ const BookingForm = ({ destination }: { destination: IDestination }) => {
 
         }
         // console.log(data)
+        const token = await getTokenFromClient()
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/booking`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                authorization:`Bearer ${token}`
             },
             body: JSON.stringify(data),
         })

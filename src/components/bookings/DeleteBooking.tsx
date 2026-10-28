@@ -10,6 +10,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import getTokenFromClient from "@/lib/getTokenFromClient"
 import { IBooking } from "@/types/bookingType"
 import { useRouter } from "next/navigation"
 import { LuTrash2 } from "react-icons/lu"
@@ -17,10 +18,14 @@ import { LuTrash2 } from "react-icons/lu"
 
 export default function DeleteBooking({ booking }: { booking: IBooking }) {
     const router = useRouter()
-
+    
     const handleDelete = async()=>{
+        const token = await getTokenFromClient()
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/my-bookings/${booking._id}`,{
-            method:'DELETE'
+            method:'DELETE',
+            headers:{
+                authorization: `Bearer ${token}`
+            }
         })
         const result = await res.json()
         // console.log(result)

@@ -2,13 +2,19 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import MyBookingCard from "@/components/bookings/MyBookingCard";
 import type { IBooking } from "@/types/bookingType";
+import getTokenFromServer from "@/lib/getTokenFromServer";
 
 const MyBookingPage = async() => {
     const session = await auth.api.getSession({
         headers: await headers()
     })
     const user = session?.user
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/my-bookings/${user?.email}`)
+    const token = await getTokenFromServer()
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/my-bookings/${user?.email}`,{
+        headers:{
+            authorization: `Bearer ${token}`
+        }
+    })
     if (!res.ok){
         throw new Error('Failed to fetch bookings data')
     }

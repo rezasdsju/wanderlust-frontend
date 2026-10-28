@@ -11,7 +11,10 @@ import {
 } from "@/components/ui/select"
 import React from "react"
 import getTokenFromClient from "@/lib/getTokenFromClient"
-
+import { authClient } from "@/lib/auth-client"
+import { toast } from "react-toastify"
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const categories = [
     "Beach",
@@ -43,12 +46,26 @@ const countries = [
     "United States",
 ];
 const AddDestinationPage = () => {
-    const handleAddPackage = async (e:React.SubmitEvent<HTMLFormElement>) => {
+    const router = useRouter()
+    const { data: session, isPending } = authClient.useSession()
+    const user = session?.user
+    // console.log('user role: ',user?.role)
+    useEffect(() => {
+        if (isPending) return
+
+        if (user?.role !== 'admin') {
+            toast.info('This page can only be visited by admins', {
+                toastId: 'admin-only',
+            })
+            router.replace('/')
+        }
+    }, [isPending, user?.role, router])
+
+    const handleAddPackage = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
         const newPackage = Object.fromEntries(formData.entries())
         // console.log('newPackage: ',newPackage)
-
         const token = await getTokenFromClient()
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations`, {
             method: "POST",
@@ -58,13 +75,13 @@ const AddDestinationPage = () => {
             },
             body: JSON.stringify(newPackage),
         })
-        if (!res.ok){
+        if (!res.ok) {
             console.log('Failed to add destination')
-            return 
+            return
         }
         const result = await res.json()
         // console.log(result)
-        if (result.acknowledged){
+        if (result.acknowledged) {
             console.log('Successfully inserted destination')
         }
 

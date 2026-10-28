@@ -6,6 +6,7 @@ A travel platform that helps users discover their ideal tour destinations and bo
 ## Features
 
 - Email and password authentication (signup and login)
+- Protected profile page for viewing and editing user information
 - Protected pages: add destination, my bookings and destination details redirect unauthenticated users to the sign-in page
 - Add new travel packages (admin-only access coming soon)
 - Browse all destinations in one place

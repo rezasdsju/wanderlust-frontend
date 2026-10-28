@@ -15,7 +15,20 @@ A travel platform that helps users discover their ideal tour destinations and bo
 - Delete destination (admin-only access coming soon)
 - View bookings associated with the authenticated user's email
 - Cancel bookings from the user's booking list
-- JWT-secured destination details API (other routes coming soon)
+- JWT-protected destination and booking APIs using Better Auth JWKS.
+
+
+
+
+### Authentication & API Security
+
+- JWT-secured destination details API
+- JWT-protected destination creation, update, and deletion APIs
+- JWT-protected booking creation and cancellation APIs
+- JWT-protected user booking retrieval API
+- Bearer token verification using Better Auth's JWKS endpoint
+- Unauthorized requests rejected when the token is missing, invalid, or expired
+
 
 
 ## Technologies Used
@@ -30,6 +43,8 @@ A travel platform that helps users discover their ideal tour destinations and bo
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JWT" />
 </p>
+
+
 
 
 ## Environment Variables

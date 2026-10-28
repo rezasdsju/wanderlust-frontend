@@ -161,6 +161,7 @@ const ProfileSkeleton = () => (
                     <div className="mt-2 h-8 rounded-lg bg-muted" />
                 </div>
             </div>
+            
 
             <div className="space-y-6">
                 <div className="space-y-4 rounded-xl bg-card p-5 ring-1 ring-foreground/10">

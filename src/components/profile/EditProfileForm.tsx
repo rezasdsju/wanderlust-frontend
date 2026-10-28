@@ -93,6 +93,7 @@ const EditProfileForm = ({ user }: { user: { name: string, email: string, image?
                             </div>
                         </div>
 
+
                         <FieldGroup>
                             <Field>
                                 <FieldLabel htmlFor="profile-name">Name</FieldLabel>

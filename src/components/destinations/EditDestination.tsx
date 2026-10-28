@@ -25,6 +25,8 @@ import { IDestination } from "@/types/destinationType"
 import React from "react"
 import { useRouter } from "next/navigation"
 import getTokenFromClient from "@/lib/getTokenFromClient"
+import { toast } from "react-toastify"
+import { authClient } from "@/lib/auth-client"
 
 
 
@@ -63,8 +65,18 @@ const countries = [
 
 export function EditDestination({ destination }: { destination: IDestination }) {
     const router = useRouter()
+    const { data: session } = authClient.useSession()
+    const user = session?.user
+    const role = user?.role
+    const handleAccessToEdit = () => {
+        if (role !== 'admin') {
+            toast.error('Only admin can Edit')
+            return
+        }
+    }
     const handleUpdate = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
+
         const formData = new FormData(e.currentTarget)
         const updatedData = Object.fromEntries(formData.entries())
         // console.log('updatedData: ', updatedData)
@@ -77,13 +89,13 @@ export function EditDestination({ destination }: { destination: IDestination }) 
             },
             body: JSON.stringify(updatedData),
         })
-        if (!res.ok){
+        if (!res.ok) {
             console.log('Not Okay')
             return
         }
         const result = await res.json()
         // console.log('result: ',result)
-        if (result.acknowledged){
+        if (result.acknowledged) {
             console.log('Update Successfull')
             router.refresh()
         }
@@ -91,7 +103,7 @@ export function EditDestination({ destination }: { destination: IDestination }) 
     return (
         <Dialog>
 
-            <DialogTrigger render={<button
+            <DialogTrigger render={<button onClick={handleAccessToEdit}
                 type="button"
                 className="inline-flex h-9 items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 text-sm font-medium text-neutral-700 shadow-sm transition hover:bg-neutral-50"
             >

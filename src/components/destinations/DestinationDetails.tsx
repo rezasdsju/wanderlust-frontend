@@ -12,6 +12,8 @@ import { EditDestination } from "./EditDestination";
 import DeleteDestination from "./DeleteDestination";
 import BookingForm from "../bookings/BookingForm";
 
+import { headers } from "next/headers"
+import { auth } from "@/lib/auth"
 
 const buildHighlights = (destination: IDestination) => {
     if (destination.highlights?.length) {
@@ -27,9 +29,14 @@ const buildHighlights = (destination: IDestination) => {
 };
 
 
-const DestinationDetails = ({ destination }: { destination: IDestination }) => {
+const DestinationDetails = async ({ destination }: { destination: IDestination }) => {
     const highlights = buildHighlights(destination);
     const reviews = destination.reviews ?? 234;
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    })
+    const user = session?.user
+    const role = user?.role
 
     return (
         <section className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
@@ -42,12 +49,15 @@ const DestinationDetails = ({ destination }: { destination: IDestination }) => {
                     Back to Destinations
                 </Link>
 
-                <div className="flex items-center gap-2">
+                {
+                    role === 'admin' &&
+                    <div className="flex items-center gap-2">
 
                         <EditDestination destination={destination}></EditDestination>
-                    <DeleteDestination destination={destination}></DeleteDestination>
+                        <DeleteDestination destination={destination}></DeleteDestination>
 
-                </div>
+                    </div>
+                }
             </div>
 
             <div className="relative mt-4 aspect-13/5 min-h-60 w-full overflow-hidden rounded-lg bg-neutral-100 sm:min-h-0">
@@ -115,7 +125,7 @@ const DestinationDetails = ({ destination }: { destination: IDestination }) => {
                     </section>
                 </div>
 
-<BookingForm destination={destination}></BookingForm>
+                <BookingForm destination={destination}></BookingForm>
             </div>
         </section>
     );

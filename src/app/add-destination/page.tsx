@@ -10,6 +10,8 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import React from "react"
+import getTokenFromClient from "@/lib/getTokenFromClient"
+
 
 const categories = [
     "Beach",
@@ -46,10 +48,13 @@ const AddDestinationPage = () => {
         const formData = new FormData(e.currentTarget)
         const newPackage = Object.fromEntries(formData.entries())
         // console.log('newPackage: ',newPackage)
+
+        const token = getTokenFromClient()
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/destinations`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(newPackage),
         })

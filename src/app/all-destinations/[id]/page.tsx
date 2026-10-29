@@ -1,6 +1,7 @@
 import DestinationDetails from "@/components/destinations/DestinationDetails";
 import getTokenFromServer from "@/lib/getTokenFromServer";
 import type { IDestination } from "@/types/destinationType";
+import { notFound } from "next/navigation";
 
 
 const DestinationDetailPage = async ({
@@ -16,6 +17,9 @@ const DestinationDetailPage = async ({
             authorization: `Bearer ${token}`
         }
     });
+    if (res.status === 404) {
+        notFound();
+    }
     if (!res.ok) {
         throw new Error("Failed to Fetch");
     }

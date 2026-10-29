@@ -44,7 +44,45 @@ A travel platform that helps users discover their ideal tour destinations and bo
 </p>
 
 
+## Project Structure
 
+```
+wanderlust-frontend/
+├── public/
+│   └── images/
+│       └── destinations/
+├── src/
+│   ├── app/
+│   │   ├── (auth)/
+│   │   │   ├── profile/
+│   │   │   ├── signin/
+│   │   │   └── signup/
+│   │   ├── add-destination/
+│   │   ├── all-destinations/
+│   │   │   └── [id]/
+│   │   ├── api/
+│   │   │   └── auth/
+│   │   │       └── [...all]/
+│   │   └── my-bookings/
+│   ├── components/
+│   │   ├── bookings/
+│   │   ├── destinations/
+│   │   ├── homepage/
+│   │   ├── loading/
+│   │   ├── profile/
+│   │   ├── shared/
+│   │   └── ui/
+│   ├── lib/
+│   ├── types/
+│   └── proxy.ts
+├── AGENTS.md
+├── README.md
+├── components.json
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+└── tsconfig.json
+```
 
 ## Environment Variables
 
